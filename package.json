@@ -1,11 +1,11 @@
 {
   "name": "react-native-sliding-up-panel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "react native sliding up panel",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ninamanalo/react-native-sliding-up-panel.git"
+    "url": "https://github.com/ninamanalo19/react-native-sliding-up-panel.git"
   },
   "keywords": [
     "react",
@@ -21,6 +21,6 @@
   "author": "Niña Manalo <nina.manalo19@gmail.com>",
   "license": {
     "type": "MIT",
-    "url": "https://github.com/ninamanalo/react-native-sliding-up-panel/blob/master/LICENSE"
+    "url": "https://github.com/ninamanalo19/react-native-sliding-up-panel/blob/master/LICENSE"
   }
 }
