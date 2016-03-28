@@ -1,5 +1,5 @@
 /**
-* React Native Sliding Up Panel 
+* React Native Sliding Up Panel
 * Copyright (C) 2015-present
 * Niña Manalo
 * https://github.com/ninamanalo/
@@ -38,7 +38,6 @@ var SlidingUpPanel = React.createClass({
       containerHalfHeight : 0,
       containerBackgroundColor : this.props.containerBackgroundColor,
       containerOpacity : this.props.containerOpacity,
-      containerBackgroundColor : this.props.containerBackgroundColor,
 
       handlerView : this.props.handlerDefaultView,
 
@@ -75,7 +74,7 @@ var SlidingUpPanel = React.createClass({
 
     if (handlerView == undefined) {
       throw "Set a handler view. Hint: It is a React Class."
-    } 
+    }
 
     if (containerMaximumHeight == undefined) {
       containerMaximumHeight = deviceHeight
@@ -123,7 +122,7 @@ var SlidingUpPanel = React.createClass({
 
   render: function() {
     return (
-      <View 
+      <View
         style = {{
           position: 'absolute',
           bottom: 0,
@@ -132,7 +131,7 @@ var SlidingUpPanel = React.createClass({
           paddingBottom: this.state.leastContainerHeight,
           backgroundColor : this.state.containerBackgroundColor
         }}>
-        <View 
+        <View
           style = {{
             height : this.state.handlerHeight,
             width : deviceWidth,
@@ -171,15 +170,15 @@ var SlidingUpPanel = React.createClass({
     var y0 = gestureState.y0;
     var negativeY = -dy;
 
-    var positionY = negativeY - this.previousTop;   
+    var positionY = negativeY - this.previousTop;
 
-    if (positionY >= this.state.containerMinimumHeight && positionY <= this.state.containerMaximumHeight) {  
+    if (positionY >= this.state.containerMinimumHeight && positionY <= this.state.containerMaximumHeight) {
 
       var lessMiddle = this.state.containerHalfHeight - 35;
       var moreMiddle = this.state.containerHalfHeight + 35;
 
       if (positionY >= lessMiddle && positionY <= moreMiddle) {
-        
+
         this.setState({
           containerHeight : this.state.containerHalfHeight,
           middleList : true,
@@ -207,7 +206,7 @@ var SlidingUpPanel = React.createClass({
     this.setState({
       middleList : false
     });
-    
+
   },
 
   handlePanResponderEnd: function(e: Object, gestureState: Object) {
@@ -233,13 +232,13 @@ var SlidingUpPanel = React.createClass({
         this.props.getContainerHeight(newContainerHeight);
       }
     } else {
-      
+
       if (dy < 0) {
-        
+
         containerHeight = this.state.containerMaximumHeight;
         this.previousTop += dy;
       } else {
-        
+
         containerHeight = this.state.containerMinimumHeight;
         this.previousTop = -this.state.containerMinimumHeight;
       }
