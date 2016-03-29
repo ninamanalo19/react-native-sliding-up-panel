@@ -15,7 +15,8 @@
     "panel",
     "sliding-up-panel"
   ],
-  "dependencies": {
+  "peerDependencies": {
+    "react-native": "^0.22.0"
   },
   "author": "Niña Manalo <nina.manalo19@gmail.com>",
   "license": {

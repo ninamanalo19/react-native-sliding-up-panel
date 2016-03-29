@@ -8,8 +8,8 @@
 
 'use strict';
 
-var Dimensions = require('Dimensions');
 var React = require('react-native');
+var Dimensions = React.Dimensions;
 
 var deviceWidth = Dimensions.get('window').width;
 var deviceHeight = Dimensions.get('window').height;
