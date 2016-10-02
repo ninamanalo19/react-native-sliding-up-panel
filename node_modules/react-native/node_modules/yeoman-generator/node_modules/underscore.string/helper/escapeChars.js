@@ -13,7 +13,7 @@ var escapeChars = {
   '>' : 'gt',
   '"' : 'quot',
   '&' : 'amp',
-  "'": '#39'
+  '\'' : '#39'
 };
 
 module.exports = escapeChars;

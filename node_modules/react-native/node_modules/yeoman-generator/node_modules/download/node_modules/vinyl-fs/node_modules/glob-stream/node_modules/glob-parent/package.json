@@ -1,0 +1,64 @@
+{
+  "name": "glob-parent",
+  "version": "3.0.0",
+  "description": "Strips glob magic from a string to provide the parent path",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha && cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/es128/glob-parent.git"
+  },
+  "keywords": [
+    "glob",
+    "parent",
+    "strip",
+    "path",
+    "directory",
+    "base"
+  ],
+  "author": {
+    "name": "Elan Shanker"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/es128/glob-parent/issues"
+  },
+  "homepage": "https://github.com/es128/glob-parent",
+  "dependencies": {
+    "is-glob": "^3.0.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0"
+  },
+  "gitHead": "fd9c64f7696717cb3d440ca9eef5060f64d61c57",
+  "_id": "glob-parent@3.0.0",
+  "_shasum": "c7bdeb5260732196c740de9274c08814056014bb",
+  "_from": "glob-parent@>=3.0.0 <4.0.0",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.6.0",
+  "_npmUser": {
+    "name": "es128",
+    "email": "elan.shanker+npm@gmail.com"
+  },
+  "dist": {
+    "shasum": "c7bdeb5260732196c740de9274c08814056014bb",
+    "tarball": "https://registry.npmjs.org/glob-parent/-/glob-parent-3.0.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "es128",
+      "email": "elan.shanker+npm@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/glob-parent-3.0.0.tgz_1473189232576_0.26026900205761194"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-3.0.0.tgz",
+  "readme": "ERROR: No README data found!"
+}

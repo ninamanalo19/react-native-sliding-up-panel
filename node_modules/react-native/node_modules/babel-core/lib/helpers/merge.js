@@ -1,25 +1,19 @@
 "use strict";
 
 exports.__esModule = true;
-// istanbul ignore next
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _getIterator2 = require("babel-runtime/core-js/get-iterator");
 
-var _lodashObjectMerge = require("lodash/object/merge");
+var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-var _lodashObjectMerge2 = _interopRequireDefault(_lodashObjectMerge);
-
-/**
- * Merge options.
- */
-
-exports["default"] = function (dest, src) {
+exports.default = function (dest, src) {
   if (!dest || !src) return;
 
-  return _lodashObjectMerge2["default"](dest, src, function (a, b) {
+  return (0, _mergeWith2.default)(dest, src, function (a, b) {
     if (b && Array.isArray(a)) {
-      var c = a.slice(0);
-      for (var _iterator = b, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var newArray = b.slice(0);
+
+      for (var _iterator = a, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : (0, _getIterator3.default)(_iterator);;) {
         var _ref;
 
         if (_isArray) {
@@ -31,15 +25,22 @@ exports["default"] = function (dest, src) {
           _ref = _i.value;
         }
 
-        var v = _ref;
+        var item = _ref;
 
-        if (a.indexOf(v) < 0) {
-          c.push(v);
+        if (newArray.indexOf(item) < 0) {
+          newArray.push(item);
         }
       }
-      return c;
+
+      return newArray;
     }
   });
 };
+
+var _mergeWith = require("lodash/mergeWith");
+
+var _mergeWith2 = _interopRequireDefault(_mergeWith);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = exports["default"];

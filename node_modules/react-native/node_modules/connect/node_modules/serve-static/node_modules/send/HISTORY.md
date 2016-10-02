@@ -1,3 +1,23 @@
+0.13.2 / 2016-03-05
+===================
+
+  * Fix invalid `Content-Type` header when `send.mime.default_type` unset
+
+0.13.1 / 2016-01-16
+===================
+
+  * deps: depd@~1.1.0
+    - Support web browser loading
+    - perf: enable strict mode
+  * deps: destroy@~1.0.4
+    - perf: enable strict mode
+  * deps: escape-html@~1.0.3
+    - perf: enable strict mode
+    - perf: optimize string replacement
+    - perf: use faster string coercion
+  * deps: range-parser@~1.0.3
+    - perf: enable strict mode
+
 0.13.0 / 2015-06-16
 ===================
 

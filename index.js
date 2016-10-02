@@ -8,8 +8,9 @@
 
 'use strict';
 
-var React = require('react-native');
-var Dimensions = React.Dimensions;
+import React, { Component } from 'react';
+import { View, PanResponder,  Text, AppRegistry, Image} from 'react-native';
+var Dimensions = require('Dimensions');
 
 var deviceWidth = Dimensions.get('window').width;
 var deviceHeight = Dimensions.get('window').height;

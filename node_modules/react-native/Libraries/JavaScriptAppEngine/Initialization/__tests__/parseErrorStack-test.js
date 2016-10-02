@@ -9,7 +9,7 @@
 'use strict';
 
 
-require('mock-modules').autoMockOff();
+jest.disableAutomock();
 
 var parseErrorStack = require('parseErrorStack');
 

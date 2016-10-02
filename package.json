@@ -1,6 +1,6 @@
 {
   "name": "react-native-sliding-up-panel",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "react native sliding up panel",
   "main": "index.js",
   "repository": {
@@ -16,7 +16,8 @@
     "sliding-up-panel"
   ],
   "peerDependencies": {
-    "react-native": "^0.22.0"
+    "react": "15.3.2",
+    "react-native": "^0.34.1"
   },
   "author": "Niña Manalo <nina.manalo19@gmail.com>",
   "license": {
