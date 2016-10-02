@@ -9,8 +9,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, PanResponder,  Text, AppRegistry, Image} from 'react-native';
-var Dimensions = require('Dimensions');
+import { View, PanResponder,  Text, AppRegistry, Image, Dimensions} from 'react-native';
 
 var deviceWidth = Dimensions.get('window').width;
 var deviceHeight = Dimensions.get('window').height;

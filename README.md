@@ -32,8 +32,5 @@ Sample is in Test.js. There are two handler views that you can choose. For **Han
 
 **GIF example of Sliding Up Panel**
 
-HandlerOne handler view in Test.js
-
-*Middle* <br>
  ![sliding-up-panel](https://cloud.githubusercontent.com/assets/16302770/19019840/e47781b6-88a5-11e6-8cd9-4115a27d4513.gif)<br>
 
