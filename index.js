@@ -17,14 +17,6 @@ var deviceHeight = Dimensions.get('window').height;
 
 var BASE_CONTAINER_HEIGHT = 40;
 
-var {
-  AppRegistry,
-  Text,
-  View,
-  PanResponder,
-  Image
-} = React;
-
 var SlidingUpPanel = React.createClass({
 
   panResponder : {},
