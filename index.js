@@ -222,8 +222,9 @@ var SlidingUpPanel = React.createClass({
       containerHeight : positionY,
       middleList : false
     });
-
-    this.props.getContainerHeight(positionY);
+    if (this.props.getContainerHeight != undefined) {
+      this.props.getContainerHeight(positionY);
+    }
   },
 
   handlePanResponderStart: function(e: Object, gestureState: Object) {
