@@ -20,11 +20,12 @@ var SlidingUpPanel = React.createClass({
 
   panResponder : {},
   previousTop : -BASE_CONTAINER_HEIGHT,
+  mainContainerHeight : 0,
 
   getInitialState: function() {
     return {
       handlerHeight : this.props.handlerHeight,
-      containerHeight : this.props.handlerHeight,
+      containerHeight : this.props.containerHeight,
       containerMinimumHeight : this.props.handlerHeight,
       containerMaximumHeight : this.props.containerMaximumHeight,
       containerHalfHeight : 0,
@@ -35,6 +36,7 @@ var SlidingUpPanel = React.createClass({
 
       handlerBackgroundColor : this.props.handlerBackgroundColor,
       handlerOpacity : this.props.handlerOpacity,
+      allowStayMiddle : this.props.allowStayMiddle,
 
       middleList : false,
     };
@@ -50,8 +52,11 @@ var SlidingUpPanel = React.createClass({
     var handlerView = this.state.handlerView;
 
     var handlerHeight = this.state.handlerHeight;
+    this.mainContainerHeight = this.state.containerHeight;
     var handlerBackgroundColor = this.state.handlerBackgroundColor;
     var handlerOpacity = this.state.handlerOpacity;
+
+    var allowStayMiddle = this.state.allowStayMiddle;
 
     //MAKE SURE PROPERTIES ARE SET
 
@@ -60,7 +65,6 @@ var SlidingUpPanel = React.createClass({
       this.setState({
         handlerHeight,
         containerMinimumHeight : BASE_CONTAINER_HEIGHT,
-        containerHeight : BASE_CONTAINER_HEIGHT,
       });
     }
 
@@ -81,6 +85,18 @@ var SlidingUpPanel = React.createClass({
         containerHalfHeight,
       });
     }
+
+    if (allowStayMiddle == undefined) {
+      allowStayMiddle = true;
+      this.setState({
+        allowStayMiddle,
+      });
+    }
+    
+    this.mainContainerHeight = this.state.containerMinimumHeight
+    this.setState({
+      containerHeight : this.mainContainerHeight
+    });
 
     if (containerBackgroundColor == undefined) {
       containerBackgroundColor = 'white'
@@ -138,6 +154,14 @@ var SlidingUpPanel = React.createClass({
     );
   },
 
+  reloadHeight:function(height) {
+    this.setState({
+      containerHeight : height,
+      middleList : false
+    });
+    this.mainContainerHeight = height;
+  },
+
   componentWillMount: function() {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder,
@@ -165,30 +189,41 @@ var SlidingUpPanel = React.createClass({
     var positionY = negativeY - this.previousTop;
 
     if (positionY >= this.state.containerMinimumHeight && positionY <= this.state.containerMaximumHeight) {
-
+      //console.log('handlePanResponderMove() -- middle=' + positionY);
       var lessMiddle = this.state.containerHalfHeight - 35;
       var moreMiddle = this.state.containerHalfHeight + 35;
 
       if (positionY >= lessMiddle && positionY <= moreMiddle) {
 
-        this.setState({
-          containerHeight : this.state.containerHalfHeight,
-          middleList : true,
-        });
-        if (this.props.getContainerHeight != undefined) {
-          this.props.getContainerHeight(this.state.containerHalfHeight);
+        if (!this.state.allowStayMiddle) {
+          this.handleMiddleFalse(positionY);
+        } else {
+          this.setState({
+            containerHeight : this.state.containerHalfHeight,
+            middleList : true,
+          });
+
+          if (this.props.getContainerHeight != undefined) {
+            this.props.getContainerHeight(this.state.containerHalfHeight);
+          }
         }
 
       } else {
-
-        this.setState({
-          containerHeight : positionY,
-          middleList : false
-        });
-
-        //this.props.getContainerHeight(positionY);
+        //console.log('handlePanResponderMove() -- NOT middle=' + positionY);
+        this.handleMiddleFalse(positionY);
       }
+
+      this.mainContainerHeight = this.state.containerHeight;
     }
+  },
+
+  handleMiddleFalse: function(positionY) {
+    this.setState({
+      containerHeight : positionY,
+      middleList : false
+    });
+
+    this.props.getContainerHeight(positionY);
   },
 
   handlePanResponderStart: function(e: Object, gestureState: Object) {
@@ -216,17 +251,24 @@ var SlidingUpPanel = React.createClass({
         middleList = false;
       }
 
+      if (!this.state.allowStayMiddle) {
+        newContainerHeight = this.state.containerMinimumHeight;
+        middleList = false;
+      }
+
       this.setState({
         containerHeight : newContainerHeight,
         middleList : middleList,
       });
+
       if (this.props.getContainerHeight != undefined) {
         this.props.getContainerHeight(newContainerHeight);
       }
+
+      this.mainContainerHeight = newContainerHeight;
     } else {
 
       if (dy < 0) {
-
         containerHeight = this.state.containerMaximumHeight;
         this.previousTop += dy;
       } else {
@@ -239,10 +281,13 @@ var SlidingUpPanel = React.createClass({
         this.setState({
           containerHeight : containerHeight,
         });
+
         if (this.props.getContainerHeight != undefined) {
           this.props.getContainerHeight(containerHeight);
         }
       }
+
+      this.mainContainerHeight = containerHeight;
 
     }
   },

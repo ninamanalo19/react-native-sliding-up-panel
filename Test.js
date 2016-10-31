@@ -1,36 +1,45 @@
 'use strict';
 
-var React = require('react-native');
-var SlidingUpPanel = require('react-native-sliding-up-panel');
-var Dimensions = require('Dimensions');
+import React, { Component } from 'react';
+import SlidingUpPanel from 'react-native-sliding-up-panel';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View, 
+  AlertIOS,
+  TouchableHighlight,
+  Dimensions,
+  Image
+} from 'react-native';
+
 var deviceHeight = Dimensions.get('window').height;
 var deviceWidth = Dimensions.get('window').width;
 
 var MAXIMUM_HEIGHT = deviceHeight - 100;
 var MINUMUM_HEIGHT = 80;
 
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  AlertIOS,
-  TouchableHighlight,
-  Image
-} = React;
+class SampleApp extends Component {
 
-var SampleApp = React.createClass({
-  render: function() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      containerHeight : 0
+    }
+  }
+
+  render() {
     return (
       <View style={styles.parentContainer}>
         <View style={styles.backContainer}>
           <Text style={styles.logText}>Panel Height: {this.state.containerHeight}</Text>
         </View>
         <SlidingUpPanel 
-            ref="panel"
+            ref={panel => { this.panel = panel; }}
             containerMaximumHeight={MAXIMUM_HEIGHT}
             containerBackgroundColor={'green'}
             handlerHeight={MINUMUM_HEIGHT}
+            allowStayMiddle={true}
             handlerDefaultView={<HandlerOne/>}
             getContainerHeight={this.getContainerHeight}>
           <View style={styles.frontContainer}>
@@ -39,24 +48,18 @@ var SampleApp = React.createClass({
         </SlidingUpPanel>
       </View>
       )
-  },
+  }
 
-  getContainerHeight: function(containerHeight) {
+  getContainerHeight = (height) => {
     this.setState({
-      containerHeight : containerHeight
+      containerHeight : height
     });
-  },
+  }
 
-  getInitialState: function() {
-    return {
-      containerHeight : 0
-    }
-  },
+};
 
-});
-
-var HandlerOne = React.createClass({
-  render: function() {
+class HandlerOne extends Component{
+  render() {
     return (
       <Image style={styles.image} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Cloud_banner.jpg'}}>
         <View style={styles.textContainer}>
@@ -65,21 +68,21 @@ var HandlerOne = React.createClass({
       </Image>
     );
   }
-});
+};
 
-var HandlerTwo = React.createClass({
-  render: function() {
+class HandlerTwo extends Component {
+  render() {
     return (
       <TouchableHighlight style={styles.button} underlayColor='transparent' onPress={this.onPress}>
         <Text style={styles.handlerText}>Tap me!</Text>
       </TouchableHighlight>
     );
-  },
+  }
 
-  onPress: function() {
+  onPress() {
     AlertIOS.alert('Event Happened', 'You just tapped the button!', [{text: 'OK'}]);
   }
-});
+};
 
 var styles = StyleSheet.create({
   parentContainer: {

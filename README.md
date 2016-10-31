@@ -19,6 +19,7 @@ handlerHeight | Number | Any | Optional
 handlerOpacity | Number | 0 to 1 (e.g) 0.5| Optional
 handlerBackgroundColor | String | Hex Colors or basic colors like 'black', 'yellow', etc. | Optional 
 handlerDefaultView | React Class | Any React Class with a view | Required
+allowStayMiddle | Boolean | true or false| Optional
 
 ##METHOD(S)
 
@@ -32,5 +33,5 @@ Sample is in Test.js. There are two handler views that you can choose. For **Han
 
 **GIF example of Sliding Up Panel**
 
- ![sliding-up-panel](https://cloud.githubusercontent.com/assets/16302770/19019840/e47781b6-88a5-11e6-8cd9-4115a27d4513.gif)<br>
+![sliding-up-panel](https://cloud.githubusercontent.com/assets/16302770/19019840/e47781b6-88a5-11e6-8cd9-4115a27d4513.gif)<br>
 
