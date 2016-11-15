@@ -162,6 +162,12 @@ var SlidingUpPanel = React.createClass({
     this.mainContainerHeight = height;
   },
 
+  collapsePanel:function() {
+    this.setState({
+      containerHeight: this.state.containerMinimumHeight,
+    });
+  },
+
   componentWillMount: function() {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder,
