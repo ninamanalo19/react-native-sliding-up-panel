@@ -162,6 +162,12 @@ var SlidingUpPanel = React.createClass({
     this.mainContainerHeight = height;
   },
 
+  collapsePanel:function() {
+    this.setState({
+      containerHeight: this.state.containerMinimumHeight,
+    });
+  },
+
   componentWillMount: function() {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder,
@@ -228,6 +234,10 @@ var SlidingUpPanel = React.createClass({
   },
 
   handlePanResponderStart: function(e: Object, gestureState: Object) {
+    if(this.props.onStart) {
+      this.props.onStart();
+    }
+
     var dy = gestureState.dy;
     var negativeY = -dy;
     this.previousTop = negativeY - this.state.containerHeight;
@@ -238,6 +248,9 @@ var SlidingUpPanel = React.createClass({
   },
 
   handlePanResponderEnd: function(e: Object, gestureState: Object) {
+    if(this.props.onEnd) {
+      this.props.onEnd();
+    }
 
     var containerHeight = this.state.containerMaximumHeight;
     var dy = gestureState.dy;
