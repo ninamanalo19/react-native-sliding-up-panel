@@ -20,12 +20,15 @@ handlerOpacity | Number | 0 to 1 (e.g) 0.5| Optional
 handlerBackgroundColor | String | Hex Colors or basic colors like 'black', 'yellow', etc. | Optional 
 handlerDefaultView | React Class | Any React Class with a view | Required
 allowStayMiddle | Boolean | true or false| Optional
+onStart | Function | Function | Optional
+onEnd | Function | Function | Optional
 
 ##METHOD(S)
 
 Method  | Parameters | Method Description | Return Value | Optional or Required
 ------  | ---------- | ------------------ | ------------ | --------------------
 getContainerHeight | containerHeight | Listening to latest final container height | containerHeight | Optional
+collapsePanel | | Collapses the panel | void | Optional
 
 ##SAMPLE
 
