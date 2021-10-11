@@ -1,4 +1,4 @@
-# react-native-sliding-up-panel
+# react-native-sliding-up-panel [DEAD FOR NOW]
 
 Inspired by [Android Sliding Panel](https://github.com/umano/AndroidSlidingUpPanel)
 
